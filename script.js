@@ -1,105 +1,113 @@
-const calculatorScreen = document.querySelector('.calculator-screen')
+const calculatorScreen = document.querySelector('.calculator-screen');
 
 const updateScreen = (number) => {
-    calculatorScreen.value = number
-}
+  calculatorScreen.value = number;
+};
 
-const numbers = document.querySelectorAll(".number")
+const numbers = document.querySelectorAll('.number');
 
-numbers.forEach ((number) => {
-    number.addEventListener("click", (event) => {
-        updateScreen(event.target.value)
-    })    
-})
+numbers.forEach((number) => {
+  number.addEventListener('click', (event) => {
+    updateScreen(event.target.value);
+  });
+});
 
-let prevNumber = ''
-let calculatorOperator = ''
-let currentNumber ='0'
+let prevNumber = '';
+let calculationOperator = '';
+let currentNumber = '0';
 
-numbers.forEach ((number) => {
-    number.addEventListener ("click", (event) => {
-        inputNumber(event.target.value)
-        updateScreen(currentNumber)
-    })
-})
+numbers.forEach((number) => {
+  number.addEventListener('click', (event) => {
+    inputNumber(event.target.value);
+    updateScreen(currentNumber);
+  });
+});
 
 const inputNumber = (number) => {
-    if (currentNumber === '0') {
-        currentNumber = number
-    } else {
-        currentNumber += number
-    }
-}
+  if (currentNumber === '0') {
+    currentNumber = number;
+  } else {
+    currentNumber += number;
+  }
+};
 
-const inputOperators = (operators) => {
-    if (calculationOperator === '') {
-        prevNumber = currentNumber
-    } 
-    calculatorOperators = operators
-    currentNumber = '0'
-}
+const inputOperators = (operator) => {
+  if (calculationOperator === '') {
+    prevNumber = currentNumber;
+  }
+  calculationOperator = operator;
+  currentNumber = '0';
+};
 
-const operators = document.querySelectorAll(".operator")
+const operators = document.querySelectorAll('.operator');
 
-operators.forEach ((operators) => {
-    operators.addEventListener("click", (event) => {
-        console.log(event.target.value);
-        inputOperators(event.target.value);
-    })
-})
+operators.forEach((operators) => {
+  operators.addEventListener('click', (event) => {
+    inputOperators(event.target.value);
+  });
+});
 
-const equalSign = document.querySelector('.equal-sign')
+const equalSign = document.querySelector('.equal-sign');
 
 equalSign.addEventListener('click', () => {
-    calculate()
-    updateScreen(currentNumber)
-})
+  calculate();
+  updateScreen(currentNumber);
+  currentNumber = '';
+});
 
 const calculate = () => {
-    let result = ''
-    switch(calculationOperators) {
-        case "+":
-            result = parseFloat(prevNumber) + parseFloat(currentNumber)
-            break
-        case "-":
-            result = parseInt(prevNumber) - parseInt(currentNumber)
-            break
-        case "*":
-            result = parseInt(prevNumber) * parseInt(currentNumber)
-            break
-        case "/":
-            result = parseInt(prevNumber) / parseInt(currentNumber)
-            break
-        default:
-            break
-    }
-    currentNumber = result
-    calculatorOperators = ''
-}
+  let result = '';
+  switch (calculationOperator) {
+    case '+':
+      result = parseFloat(prevNumber) + parseFloat(currentNumber);
+      break;
+    case '-':
+      result = parseInt(prevNumber) - parseInt(currentNumber);
+      break;
+    case '*':
+      result = parseInt(prevNumber) * parseInt(currentNumber);
+      break;
+    case '/':
+      result = parseInt(prevNumber) / parseInt(currentNumber);
+      break;
+    default:
+      break;
+  }
+  currentNumber = result;
+  calculationOperator = '';
+};
 
-const clearBtn = document.querySelector('.all-clear')
+const clearBtn = document.querySelector('.all-clear');
 
 clearBtn.addEventListener('click', () => {
-    clearAll()
-    updateScreen(currentNumber)
-})
+  clearAll();
+  updateScreen(currentNumber);
+});
 
 const clearAll = () => {
-    prevNumber = ''
-    calculationOperators = ''
-    currentNumber = '0'
-}
+  prevNumber = '';
+  calculationOperators = '';
+  currentNumber = '0';
+};
 
-const decimal = document.querySelector('.decimal')
+const decimal = document.querySelector('.decimal');
 
 decimal.addEventListener('click', (event) => {
-    inputDecimal(event.target.value)
-    updateScreen(currentNumber)
-})
+  inputDecimal(event.target.value);
+  updateScreen(currentNumber);
+});
 
 inputDecimal = (dot) => {
-    if (currentNumber.includes('.')) {
-        return
-    }
-    currentNumber += dot
-}
+  if (currentNumber.includes('.')) {
+    return;
+  }
+  currentNumber += dot;
+};
+
+const percentage = document.querySelector('.percentage');
+
+percentage.addEventListener('click', () => {
+  let resultPercentage = (currentNumber = parseInt(currentNumber) / 100);
+  updateScreen(resultPercentage);
+});
+
