@@ -31,19 +31,20 @@ const inputNumber = (number) => {
     }
 }
 
-const inputOperator = (operator) => {
+const inputOperators = (operators) => {
     if (calculationOperator === '') {
         prevNumber = currentNumber
     } 
-    calculatorOperator = operator
+    calculatorOperators = operators
     currentNumber = '0'
 }
 
-const operator = document.querySelectorAll(".operator")
+const operators = document.querySelectorAll(".operator")
 
-operators.forEach ((operator) => {
-    operator.addEventListener("click", (event) => {
-        inputOperator(event.target.value)
+operators.forEach ((operators) => {
+    operators.addEventListener("click", (event) => {
+        console.log(event.target.value);
+        inputOperators(event.target.value);
     })
 })
 
@@ -56,7 +57,7 @@ equalSign.addEventListener('click', () => {
 
 const calculate = () => {
     let result = ''
-    switch(calculationOperator) {
+    switch(calculationOperators) {
         case "+":
             result = parseFloat(prevNumber) + parseFloat(currentNumber)
             break
@@ -73,7 +74,7 @@ const calculate = () => {
             break
     }
     currentNumber = result
-    calculatorOperator = ''
+    calculatorOperators = ''
 }
 
 const clearBtn = document.querySelector('.all-clear')
@@ -85,7 +86,7 @@ clearBtn.addEventListener('click', () => {
 
 const clearAll = () => {
     prevNumber = ''
-    calculationOperator = ''
+    calculationOperators = ''
     currentNumber = '0'
 }
 

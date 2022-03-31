@@ -28,21 +28,22 @@
 button {
     height: 80px;
     background-color: palevioletred;
-    border: 1px solid whitesmoke;
+    border: 7px solid whitesmoke;
     font-size: 32px;
     color: #fff;
     width: 25%;
     outline: none;
-    border-radius: 50%;
+    border-radius: 100%;
 }
 
 .all-clear, .zero-btn {
     width: 50%;
+    border-radius: 50%;
 }
 
 .operator, .equal-sign {
     background-color: darkred;
-    border-radius: 40%;
+    border-radius: 100%;
 }
 
 button:hover {
