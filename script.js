@@ -16,9 +16,6 @@ let prevNumber = ''
 let calculatorOperator = ''
 let currentNumber ='0'
 
-const inputNumber = (number) => {
-    currentNumber = number
-}
 numbers.forEach ((number) => {
     number.addEventListener ("click", (event) => {
         inputNumber(event.target.value)
