@@ -86,7 +86,7 @@ clearBtn.addEventListener('click', () => {
 
 const clearAll = () => {
   prevNumber = '';
-  calculationOperators = '';
+  calculationOperator = '';
   currentNumber = '0';
 };
 
